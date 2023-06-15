@@ -1,12 +1,12 @@
-
-
-var apiUrl;
+const url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMake/"
+var apiUrl;  //Created an empty Variable to store the API URL when ser selects an option
 
 function selectedVehicle(){
 
 let selectedValue = document.getElementById("selectName").value
-var url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMake/"
 
+
+// Using if else if function to add the Vehicles of users choice in URL
 
     if(selectedValue  == "mec"){
         apiUrl = url + "merc" + "?format=json"
@@ -57,7 +57,8 @@ var url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMake/"
     }
 }
 
-async function getVehicleData(URL){
+async function getVehicleData(URL)   // The URLs from apiUrl is passed as a parameter
+{
     
     try{
         let res = await fetch(URL)
@@ -65,7 +66,8 @@ async function getVehicleData(URL){
         constructData(data.Results)
     }
         
-    catch(error){
+    catch(error) // Catch is used to fetch error when failed to Fetch API
+    {
         console.log(error)
     }
 
@@ -73,7 +75,8 @@ async function getVehicleData(URL){
 
 
 
-function constructData(data){
+function constructData(data) // This function creates the table when ever the user chooses an option
+{
   
     let div = document.getElementById("table")
     div.innerHTML = ""
@@ -107,7 +110,8 @@ function constructData(data){
         tbody.appendChild(tr)
     });
 }
-else{
+else  // If the option is Select Car then it displays nothing
+{
     div.innerHTML = ""
 }
     
