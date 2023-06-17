@@ -8,7 +8,7 @@ function selectedVehicle(value){
 
    if(value !=="0"){
         apiUrl = url + value + "?format=json"
-        getVehicleData(apiUrl)
+        getVehicleData(apiUrl);
     }
 
     else
